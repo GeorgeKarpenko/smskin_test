@@ -18,7 +18,7 @@ use App\Http\Controllers\CommentController;
 
 Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
 Route::get('/articles/{slug}', [ArticleController::class, 'show'])->name('article');
-Route::get('/articles/{notice}/{id}', [ArticleController::class, 'notice'])->name('articles');
+Route::get('/articles/{notice}/{id}', [ArticleController::class, 'notice'])->name('articles')->where('notice', 'number_of_views|number_of_likes');
 Route::get('/last/articles', [ArticleController::class, 'lastArticles'])->name('last.articles');
 Route::post('/comment/store', [CommentController::class, 'store'])->name('comment.store');
 
