@@ -4,16 +4,22 @@
             v-if="article"
             :article="article"
         />
+        <Form
+            v-if="article"
+            :article_id="article.id"
+        />
     </div>
 </template>
 
 
 <script>
     import Article from '../../Components/Article.vue'
+    import Form from '../../Components/Form.vue'
     import { mapActions } from 'vuex'
     export default {
         components: {
-            Article
+            Article,
+            Form
         },
         created () {
             if (!this.article){
