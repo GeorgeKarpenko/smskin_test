@@ -160,12 +160,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.errors = {};
       evt.preventDefault();
       this.comment(this.form).then(function (data) {
-        console.log(data);
         _this.data = data.message;
+        _this.form = {
+          subject: '',
+          body: '',
+          article_id: _this.article.id
+        };
 
         _this.showModal();
       })["catch"](function (err) {
-        console.warn(err.response.data);
         _this.errors = err.response.data.errors;
       });
     },

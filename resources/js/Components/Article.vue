@@ -145,6 +145,11 @@ export default {
             this.comment(this.form)
                 .then((data) => {
                     this.data = data.message
+                    this.form = {
+                        subject:'',
+                        body:'',
+                        article_id: this.article.id
+                    }
                     this.showModal()
                 })
                 .catch(err => {
