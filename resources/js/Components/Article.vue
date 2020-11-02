@@ -144,12 +144,10 @@ export default {
             evt.preventDefault()
             this.comment(this.form)
                 .then((data) => {
-                    console.log(data)
                     this.data = data.message
                     this.showModal()
                 })
                 .catch(err => {
-                    console.warn(err.response.data)
                     this.errors = err.response.data.errors;
                 })
         },
