@@ -26,7 +26,7 @@ class ArticleTagSeed extends Seeder
                 $x = mt_rand(1, count($tagIds) - 1);
                 if ( !in_array($x,$numbers) ) {
                     $numbers[] = $x;
-                    $tagIdsRandom = $tagIds[$x];
+                    $tagIdsRandom []= $tagIds[$x];
                 }
             }
             $tags = Tag::find($tagIdsRandom);
