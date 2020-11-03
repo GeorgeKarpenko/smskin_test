@@ -12,7 +12,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 
-Vue.component('App', require('./Layouts/DefaultLayout.vue').default);
+Vue.component('App', require('./Pages/App.vue').default);
 
 const app = new Vue({
     el: '#app',

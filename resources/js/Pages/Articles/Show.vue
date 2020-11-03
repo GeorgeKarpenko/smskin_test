@@ -1,30 +1,41 @@
 <template>
     <div>
-        <Article
-            v-if="article"
-            :article="article"
-        />
-        <Form
-            v-if="article"
-            :article_id="article.id"
-        />
+        <Loader v-if="loader" />
+        <template
+            v-else
+        >
+            <Article
+                :article="article"
+            />
+            <Form
+                :article_id="article.id"
+            />
+        </template>
     </div>
 </template>
 
 
 <script>
-    import Article from '../../Components/Article.vue'
-    import Form from '../../Components/Form.vue'
+    import Article from '../../Components/Article'
+    import Form from '../../Components/Form'
+    import Loader from '../../Components/Loader'
     import { mapActions } from 'vuex'
     export default {
+        data () {
+            return {
+                loader: true
+            }
+        },
         components: {
             Article,
-            Form
+            Form,
+            Loader
         },
-        created () {
+        async mounted () {
             if (!this.article){
-                this.method_article(this.$route.params.slug)
+                await this.method_article(this.$route.params.slug)
             }
+            this.loader = false
         },
         computed: {
             article () {

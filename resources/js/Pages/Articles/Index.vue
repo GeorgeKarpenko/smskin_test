@@ -1,6 +1,7 @@
 <template>
     <div>
         <h1>Каталог статей</h1>
+        <Loader v-if="loader" />
         <Articles 
             :articles="articles.data"
         />
@@ -12,20 +13,30 @@
 
 
 <script>
-    import Articles from '../../Components/Articles.vue'
-    import Pagination from '../../Components/Pagination.vue'
+    import Articles from '../../Components/Articles'
+    import Loader from '../../Components/Loader'
+    import Pagination from '../../Components/Pagination'
     import {mapGetters, mapActions} from 'vuex'
     export default {
         components: {
             Articles,
+            Loader,
             Pagination
         },
-        created() {
-            this.method_articles(this.page || 1)
+        data () {
+            return {
+                loader: true
+            }
+        },
+        async mounted() {
+            await this.method_articles(this.page || 1)
+            this.loader = false
         },
         watch: {
-            page () {
-                this.method_articles(this.page || 1)
+            async page () {
+                this.loader = true
+                await this.method_articles(this.page || 1)
+                this.loader = false
             }
         },
         computed: {

@@ -9,17 +9,7 @@
         </b-container>
     </b-navbar>
     <b-container>
-        <router-view></router-view>
+        <router-view />
     </b-container>
 </div>
 </template>
-
-<script>
-export default {
-    data(){
-        return{
-            isExactActive: true
-        }
-    }
-}
-</script>

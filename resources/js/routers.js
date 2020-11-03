@@ -10,18 +10,24 @@ const routes = [
         component: () => import('./Pages/Index'), 
     },
     {
-        name:'articles',
-        path:'/articles',
-        component: () => import('./Pages/Articles/Index'), 
-    },
-    {
-        name: 'article',
-        path: '/articles/:slug',
-        component: () => import('./Pages/Articles/Show'),
+        path: '/articles',
+        component: () => import('./Pages/Articles'),
+        children: [
+            {
+                name:'articles',
+                path:'',
+                component: () => import('./Pages/Articles/Index'), 
+            },
+            {
+                name: 'article',
+                path: ':slug',
+                component: () => import('./Pages/Articles/Show'),
+            },
+        ]
     },
     // {
     //     path: '*',
-    //     component: NotFoundComponent
+    //     component: () => import('./Pages/NotFoundComponent'), // 404
     // }
 ];
 
