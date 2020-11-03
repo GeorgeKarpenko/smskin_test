@@ -45,9 +45,9 @@ export default{
             const { data } = await axios.get(`/api/articles/${payload}`)
             context.commit('articles', {data: [data]})
         },
-        async notice(context, payload){
+        notice(context, payload){
             context.commit('notice', payload)
-            await axios.get(`/api/articles/${payload.notice}/${payload.id}`)
+            axios.get(`/api/articles/${payload.notice}/${payload.id}`)
         },
         async comment(context, payload){
             const { data } = await axios.post('/api/comment/store', payload)
