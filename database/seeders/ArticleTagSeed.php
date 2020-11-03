@@ -15,8 +15,9 @@ class ArticleTagSeed extends Seeder
      */
     public function run()
     {
+        $tagIds = \App\Models\Tag::factory(10)->create()->pluck('id')->toArray();
         $articles = Article::all();
-        $tagIds = Tag::pluck('id')->toArray();
+        // $tagIds = Tag::pluck('id')->toArray();
 
         $count = mt_rand(1, count($tagIds) - 1);
         foreach ($articles as $key => $article) {
