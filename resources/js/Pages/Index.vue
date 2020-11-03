@@ -28,7 +28,7 @@
             if (!this.articles.length){
                 await this.last_articles()
             }
-            // this.loader = false
+            this.loader = false
         },
         computed: {
             ...mapGetters('articles', {

@@ -140,6 +140,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               return _this.last_articles();
 
             case 3:
+              _this.loader = false;
+
+            case 4:
             case "end":
               return _context.stop();
           }
